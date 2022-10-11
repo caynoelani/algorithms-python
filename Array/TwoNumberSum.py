@@ -1,17 +1,17 @@
 # Write a function that takes in a non-empty list of distinct integers and an integer representing a target sum.  If any two numbers in the input list sum up to the target sum, the function should return them in an list, in any order. If no two numbers sum up to the target sum, the function should return an empty list. 
 
-def twoNumberSum(list, target):
-    map = {}
+def twoNumberSum(list, target): #takes in array and target integer
+    map = {} # map to keep track of numbers in list for maximum time efficiency
 
-    for num in list:
-        dif = target - num  
+    for num in list: # iterate through list
+        dif = target - num #variable dif keeps track of number we are checking for
 
-        if dif in map:
-            return [dif, num]
-        else:
-            map[num] = True
+        if dif in map: #if dif is in our hashmap
+            return [dif, num] #we've found a pair whose sum is target
+        else: #otherwise
+            map[num] = True #add current number to the map and start the loop over
 
-    return []
+    return [] #if no pairs found return an empty list
 
 list1 = [3, 5, -4, 8, 11, 1, -1, 6]
 target1 = 10
