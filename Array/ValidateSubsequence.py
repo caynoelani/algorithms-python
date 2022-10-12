@@ -10,10 +10,7 @@ def ValidSubsequence(array, subsequence): #takes in two arrays
 
         i +=1 #increment i
         
-    if j == len(subsequence): #if we traversed through entire subsequence
-        return True #is valid subsequence
-    else: #otherwise
-        return False #is not valid subsequence
+    return j == len(subsequence) #return if we traverse through entire subsequence
 
 array1 = [5, 1, 22, 25, 6, -1, 8, 10]
 sequence1 = [1, 6, -1, 10]
