@@ -1,17 +1,24 @@
-# Write a function that takes in a non-empty list of distinct integers and an integer representing a target sum.  If any two numbers in the input list sum up to the target sum, the function should return them in an list, in any order. If no two numbers sum up to the target sum, the function should return an empty list. 
+# an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order.
 
-def twoNumberSum(list, target): #takes in array and target integer
-    map = {} # map to keep track of numbers in list for maximum time efficiency
+#Questions
+    #Confirm there is always eactly one solution and the array is always full of integers
+    #Do we have to worry about input times in terms of memory
 
-    for num in list: # iterate through list
-        dif = target - num #variable dif keeps track of number we are checking for
+#Considerations
+    #Brute Force: Nest loop to compare each number until a valid sum is found //O(n^2)
+    #Most Efficient: Use a hashmap to store each passed value, and see if the difference of the target and current index value is in the map
 
-        if dif in map: #if dif is in our hashmap
-            return [dif, num] #we've found a pair whose sum is target
-        else: #otherwise
-            map[num] = True #add current number to the map and start the loop over
+def twoNumberSum(list, target): 
+    differenceMap = {}
 
-    return [] #if no pairs found return an empty list
+    for num in range(len(list)):
+        current = list[num]
+        difference = target - current
+    
+        if difference in differenceMap:
+            return [num, differenceMap[difference]]
+        else:
+            differenceMap[current] = num
 
 list1 = [3, 5, -4, 8, 11, 1, -1, 6]
 target1 = 10
@@ -25,7 +32,6 @@ target3 = 17
 list4 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 15]
 target4 = 43
 
-print(twoNumberSum(list1, target1)) #[-1, 11]
-print(twoNumberSum(list2, target2)) #[4, 1]
-print(twoNumberSum(list3, target3)) #[8, 9]
-print(twoNumberSum(list4, target4)) #[]
+print(twoNumberSum(list1, target1)) #[6, 4]
+print(twoNumberSum(list2, target2)) #[0, 2]
+print(twoNumberSum(list3, target3)) #[8, 7]
